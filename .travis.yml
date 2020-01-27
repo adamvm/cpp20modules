@@ -21,5 +21,6 @@ install:
         export PATH=${DEPS_DIR}/cmake/bin:${PATH}
       fi
 script:
-  - CXX=/usr/bin/g++-8 CC=/usr/bin/gcc-8 cmake .
-  - ${DEPS_DIR}/cmake/bin/cmake --build .
+  - clang++ -std=c++2a -fmodules-ts --precompile math.cppm -o math.pcm
+  - clang++ -std=c++2a -fmodules-ts -c math.pcm -o math.o
+  - clang++ -std=c++2a -fmodules-ts -fprebuilt-module-path=. math.o main.cpp -o math
