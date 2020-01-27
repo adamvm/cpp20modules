@@ -23,4 +23,9 @@ install:
 script:
   - clang++ -std=c++2a -fmodules-ts --precompile math.cppm -o math.pcm
   - clang++ -std=c++2a -fmodules-ts -c math.pcm -o math.o
-  - clang++ -std=c++2a -fmodules-ts -fprebuilt-module-path=. math.o main.cpp -o math
+  - clang++ -std=c++2a -fmodules-ts -c math.cpp -fmodule-file=math.pcm -o math.o
+  - clang++ -std=c++2a -fmodules-ts -c main.cpp -fmodule-file=math.pcm -o main.o
+  - clang++  math.pcm main.o math.o -o math
+
+
+
