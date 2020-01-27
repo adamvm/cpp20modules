@@ -26,6 +26,7 @@ script:
   - clang++ -std=c++2a -fmodules-ts -c math.cpp -fmodule-file=math.pcm -o math.o
   - clang++ -std=c++2a -fmodules-ts -c main.cpp -fmodule-file=math.pcm -o main.o
   - clang++  math.pcm main.o math.o -o math
+  - ./math
 
 
 
